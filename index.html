@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Serverless Greeting</title>
+</head>
+<body>
+    <h1>Greeting from your Serverless API:</h1>
+    <div id="output">Loading...</div>
+
+    <script>
+        const apiUrl = "https://<din-invoke-id>.execute-api.<region>.amazonaws.com/prod/hello";
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("output").innerText = data.body;
+            })
+            .catch(err => {
+                document.getElementById("output").innerText = "Error: " + err;
+            });
+    </script>
+</body>
+</html>
